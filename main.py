@@ -1,6 +1,6 @@
 import os
 import sys
-import user_pass
+from user_pass import user_pass
 
 curly = '}'
 
@@ -11,7 +11,7 @@ def login():
     user = input('Enter your username: ')
     password = input('Enter password: ')
     try:
-        if password == user_pass.user_pass[user]:
+        if password == user_pass[user]:
             print('Logged in')
             loggedin = True
 
@@ -31,7 +31,7 @@ def start(user):
 def set_user():
     # user_pass[input('New user: ')] = input('Password: ')
     new_user = input('New username: ')
-    if new_user in user_pass.user_pass:
+    if new_user in user_pass:
         sys.exit('User already exists')
 
     new_user_pass = input('Password: ')
