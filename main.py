@@ -43,14 +43,12 @@ def set_user():
 	f.close()
 	f1.close()
 
-def main():
-	logInOrCreate = input('Press and enter "l" to login or "c" to create an account: ')
+def login_or_create(l):
 
-
-	if logInOrCreate.lower().strip() == 'l':
+	if l.lower().strip() == 'l':
 		user, loggedin = login()
 
-	elif logInOrCreate.lower().strip() == 'c':
+	elif l.lower().strip() == 'c':
 		set_user()
 		print('User created')
 		sys.exit(0)
@@ -60,6 +58,9 @@ def main():
 
 	if loggedin == True:
 		start(user)
+
+def main():
+	return login_or_create(input('Press and enter "l" to login or "c" to create an account: '))
 
 if __name__ == '__main__':
 	main()
