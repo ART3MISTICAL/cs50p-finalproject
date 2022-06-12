@@ -4,8 +4,6 @@ from user_pass import user_pass
 
 curly = '}'
 
-
-
 def login(user, password):
 	try:
 		if password == user_pass[user]:
