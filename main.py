@@ -28,13 +28,9 @@ def login():
 def start(user):
 	print(f'Welcome {user}')
 
-def set_user():
-	# user_pass[input('New user: ')] = input('Password: ')
-	new_user = input('New username: ')
+def set_user(new_user, new_user_pass):
 	if new_user in user_pass:
 		sys.exit('User already exists')
-
-	new_user_pass = input('Password: ')
 	f.seek(-1, os.SEEK_END)
 	f.truncate()
 	f1.write(f'	\'{new_user}\' : \'{new_user_pass}\', \n{curly}')
@@ -42,6 +38,7 @@ def set_user():
 	f1.flush()
 	f.close()
 	f1.close()
+	return 'for pytest'
 
 def login_or_create(l):
 
@@ -49,7 +46,12 @@ def login_or_create(l):
 		user, loggedin = login()
 
 	elif l.lower().strip() == 'c':
-		set_user()
+		new_user = input('New username: ')
+
+		new_user_pass = input('Password: ')
+
+		set_user(new_user, new_user_pass)
+		
 		print('User created')
 		sys.exit(0)
 
