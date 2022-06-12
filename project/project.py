@@ -1,6 +1,6 @@
 import os
 import sys
-from user_pass import user_pass
+from project.user_pass import user_pass
 
 curly = '}'
 
@@ -21,7 +21,7 @@ def login(user, password):
 	return user, loggedin
 
 def start(user):
-	print(f'Welcome {user}')
+	return f'Welcome {user}'
 
 def set_user(new_user, new_user_pass):
 	if new_user in user_pass:
@@ -59,7 +59,7 @@ def login_or_create(l):
 		sys.exit('An error occurred, try again')
 
 	if loggedin == True:
-		start(user)
+		print(start(user))
 
 def main():
 	return login_or_create(input('Press and enter "l" to login or "c" to create an account: '))
