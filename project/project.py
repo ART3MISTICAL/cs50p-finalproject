@@ -1,6 +1,7 @@
 import os
 import sys
 from user_pass import user_pass
+import pywhatkit
 
 curly = '}'
 
@@ -21,6 +22,7 @@ def login(user, password):
 	return user, loggedin
 
 def start(user):
+	pywhatkit.playonyt('https://youtu.be/xvFZjo5PgG0')
 	return f'Welcome {user}'
 
 def set_user(new_user, new_user_pass):
