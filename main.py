@@ -37,7 +37,7 @@ def set_user():
 	new_user_pass = input('Password: ')
 	f.seek(-1, os.SEEK_END)
 	f.truncate()
-	f1.write(f'    \'{new_user}\' : \'{new_user_pass}\', \n{curly}')
+	f1.write(f'	\'{new_user}\' : \'{new_user_pass}\', \n{curly}')
 	f.flush()
 	f1.flush()
 	f.close()
