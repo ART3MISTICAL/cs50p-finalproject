@@ -4,8 +4,7 @@ from user_pass import user_pass
 
 curly = '}'
 
-f = open('user_pass.py', 'ab+')
-f1 = open('user_pass.py', 'a+')
+
 
 def login():
 	user = input('Enter your username: ')
@@ -29,6 +28,8 @@ def start(user):
 	print(f'Welcome {user}')
 
 def set_user(new_user, new_user_pass):
+	f = open('user_pass.py', 'ab+')
+	f1 = open('user_pass.py', 'a+')
 	if new_user in user_pass:
 		sys.exit('User already exists')
 	f.seek(-1, os.SEEK_END)
