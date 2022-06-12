@@ -1,6 +1,6 @@
-import project.project as project
+import project
 import pytest
-import project.user_pass as user_pass
+import user_pass as user_pass
 
 def test_not_lc():
 	with pytest.raises(SystemExit):

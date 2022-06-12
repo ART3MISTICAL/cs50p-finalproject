@@ -1,6 +1,6 @@
 import os
 import sys
-from project.user_pass import user_pass
+from user_pass import user_pass
 
 curly = '}'
 
