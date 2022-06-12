@@ -1,5 +1,6 @@
 import main
 import pytest
+import user_pass
 
 def test_not_lc():
 	with pytest.raises(SystemExit):
@@ -10,6 +11,6 @@ def test_not_lc():
 
 def test_new_user():
 	assert main.set_user('user','123') == 'for pytest'
-	with pytest.raises(SystemExit):
-		assert main.set_user('user','123')
+
+def test_login():
 

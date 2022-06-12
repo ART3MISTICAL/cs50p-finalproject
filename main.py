@@ -6,9 +6,7 @@ curly = '}'
 
 
 
-def login():
-	user = input('Enter your username: ')
-	password = input('Enter password: ')
+def login(user, password):
 	try:
 		if password == user_pass[user]:
 			print('Logged in')
@@ -28,23 +26,26 @@ def start(user):
 	print(f'Welcome {user}')
 
 def set_user(new_user, new_user_pass):
-	f = open('user_pass.py', 'ab+')
-	f1 = open('user_pass.py', 'a+')
 	if new_user in user_pass:
 		sys.exit('User already exists')
-	f.seek(-1, os.SEEK_END)
-	f.truncate()
-	f1.write(f'	\'{new_user}\' : \'{new_user_pass}\', \n{curly}')
-	f.flush()
-	f1.flush()
-	f.close()
-	f1.close()
-	return 'for pytest'
+	else:
+		f = open('user_pass.py', 'ab+')
+		f1 = open('user_pass.py', 'a+')
+		f.seek(-1, os.SEEK_END)
+		f.truncate()
+		f1.write(f'	\'{new_user}\' : \'{new_user_pass}\', \n{curly}')
+		f.flush()
+		f1.flush()
+		f.close()
+		f1.close()
+		return 'for pytest'
 
 def login_or_create(l):
 
 	if l.lower().strip() == 'l':
-		user, loggedin = login()
+		user = input('Enter your username: ')
+		password = input('Enter password: ')
+		user, loggedin = login(user, password)
 
 	elif l.lower().strip() == 'c':
 		new_user = input('New username: ')
