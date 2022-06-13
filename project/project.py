@@ -2,12 +2,13 @@ import os
 import sys
 from user_pass import user_pass
 import pywhatkit
+import bcrypt
 
 curly = '}'
 
 def login(user, password):
 	try:
-		if password == user_pass[user]:
+		if bcrypt.checkpw(password.encode("utf-8"), user_pass[user]):
 			print('Logged in')
 			loggedin = True
 
@@ -29,11 +30,12 @@ def set_user(new_user, new_user_pass):
 	if new_user in user_pass:
 		sys.exit('User already exists')
 	else:
+		hashed = bcrypt.hashpw(new_user_pass.encode("utf-8"), bcrypt.gensalt())
 		f = open('user_pass.py', 'ab+')
 		f1 = open('user_pass.py', 'a+')
 		f.seek(-1, os.SEEK_END)
 		f.truncate()
-		f1.write(f'	\'{new_user}\' : \'{new_user_pass}\', \n{curly}')
+		f1.write(f'	\'{new_user}\' : {hashed}, \n{curly}')
 		f.flush()
 		f1.flush()
 		f.close()
@@ -53,7 +55,7 @@ def login_or_create(l):
 		new_user_pass = input('Password: ')
 
 		set_user(new_user, new_user_pass)
-		
+
 		print('User created')
 		sys.exit(0)
 
